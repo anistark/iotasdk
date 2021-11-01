@@ -2,12 +2,16 @@
 use clap::Parser;
 
 #[derive(Parser)]
-#[clap(version = "0.0.1", author = "Kumar Anirudha. <mail@anirudha.dev>")]
+
+#[clap(name = "IOTASDK")]
+#[clap(version = "0.0.1")]
+#[clap(author = "Kumar Anirudha github.com/anistark")]
+#[clap(about = "Simplifying BUIDL using IOTA!")]
 
 struct Opts {
     // /// Sets a custom config file. Could have been an Option<T> with no default too
-    // #[clap(short, long, default_value = "default.conf")]
-    // config: String,
+    #[clap(short, long, default_value = "default.conf")]
+    config: String,
 
     /// Some input. Because this isn't an Option<T> it's required to be used
     input: String,
