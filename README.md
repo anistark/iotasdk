@@ -47,3 +47,28 @@ Use:
 
 ---
 
+Usage:
+
+```sh
+iotasdk 0.0.1
+
+Kumar Anirudha <mail@anirudha.dev>
+
+IOTASDK :: A Swiss Knife for all things IOTA
+
+USAGE:
+    iotasdk [OPTIONS] <SUBCOMMAND>
+
+OPTIONS:
+    -c, --config <CONFIG>    Sets a custom config file. Could have been an Option<T> with no default
+                             too [default: default.conf]
+    -h, --help               Print help information
+    -v, --verbose            A level of verbosity, and can be used multiple times
+    -V, --version            Print version information
+
+SUBCOMMANDS:
+    contract    Manage Smart Contracts
+    help        Print this message or the help of the given subcommand(s)
+    init        Initialise IOTASDK
+    node        Configure and Control your IOTA Nodes
+```
