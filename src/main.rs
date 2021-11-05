@@ -3,6 +3,7 @@ extern crate clap;
 
 mod nodes;
 mod info;
+mod schema;
 
 use clap::Parser;
 
@@ -31,13 +32,20 @@ enum SubCommand {
     #[clap(version = "0.0.1")]
     #[clap(author = "Kumar Anirudha <mail@anirudha.dev>")]
 
+    /// Setup and Configure IOTA Nodes. Try: `iotasdk node --help`
     Node(Node),
 
+    /// Initialise IOTASDK. Try: `iotasdk init --help`
     Init(Init),
 
+    /// Deploy and Interact with Smart Contracts with VM specific and Chain Specific configs. Try: `iotasdk contract --help`
     Contract(Contract),
 
+    /// Get all info. Try: `iotasdk info --help`
     Info(Info),
+
+    /// Schema Tool is used to generate Smart Contract Code. Try: `iotasdk schema --help`
+    Schema(Schema),
 }
 
 /// Configure and Control your IOTA Nodes
@@ -89,25 +97,12 @@ struct Contract {
     debug: bool,
     
     /// Smart Contract VM
-    #[clap(long, required=true)]
+    #[clap(long)]
     vm: String,
 
     /// WASP Chain ID.
     #[clap(long)]
     chain: String,
-
-    #[clap(subcommand)]
-    subcmd: ContractCommand,
-}
-
-
-#[derive(Parser)]
-enum ContractCommand {
-    #[clap(version = "0.0.1")]
-    #[clap(author = "Kumar Anirudha <mail@anirudha.dev>")]
-
-    /// Schema Tool can be used to auto-generate smart contract code from yaml file.
-    Schema(Schema),
 }
 
 /// Schema Tool
@@ -205,6 +200,22 @@ fn main() {
             }
 
         }
+
+        SubCommand::Schema(s) => {
+            if s.init {
+                schema::init();
+            } else if s.rust {
+                schema::rust();
+            } else if s.go {
+                schema::go();
+            } else if s.ts {
+                schema::ts();
+            } else {
+                println!("Unknonwn command for Schema Tool. Try: `iotasdk schema --help`");
+            }
+
+        }
+
     }
 
 }

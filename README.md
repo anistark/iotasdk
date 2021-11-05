@@ -63,36 +63,16 @@ OPTIONS:
     -c, --config <CONFIG>    Sets a custom config file. Could have been an Option<T> with no default
                              too [default: default.conf]
     -h, --help               Print help information
-    -v, --verbose            A level of verbosity, and can be used multiple times
     -V, --version            Print version information
 
 SUBCOMMANDS:
-    contract    Manage Smart Contracts
+    contract    Deploy and Interact with Smart Contracts with VM specific and Chain Specific
+                configs. Try: `iotasdk contract --help`
     help        Print this message or the help of the given subcommand(s)
-    init        Initialise IOTASDK
-    node        Configure and Control your IOTA Nodes
+    info        Get all info. Try: `iotasdk info --help`
+    init        Initialise IOTASDK. Try: `iotasdk init --help`
+    node        Setup and Configure IOTA Nodes. Try: `iotasdk node --help`
+    schema      Schema Tool is used to generate Smart Contract Code. Try: `iotasdk schema
+                --help`
 ```
-
-For node config:
-
-```sh
-Configure and Control your IOTA Nodes
-
-USAGE:
-    iotasdk node <NODESELECT> [OPTIONS]
-
-ARGS:
-    <NODESELECT>    Node Input. Available: bee, hornet, goshimmer, wasp
-
-OPTIONS:
-    -d                         Print debug info
-    -h, --help                 Print help information
-    -i, --install <INSTALL>    Install Node
-    -p, --purge <PURGE>        Purge Node
-    -r, --reset <RESET>        Reset Node
-    -u, --update <UPDATE>      Update Node
-        --upgrade <UPGRADE>    Upgrade Node
-    -V, --version              Print version information
-```
-
 
