@@ -72,3 +72,27 @@ SUBCOMMANDS:
     init        Initialise IOTASDK
     node        Configure and Control your IOTA Nodes
 ```
+
+For node config:
+
+```sh
+Configure and Control your IOTA Nodes
+
+USAGE:
+    iotasdk node <NODESELECT> [OPTIONS]
+
+ARGS:
+    <NODESELECT>    Node Input. Available: bee, hornet, goshimmer, wasp
+
+OPTIONS:
+    -d                         Print debug info
+    -h, --help                 Print help information
+    -i, --install <INSTALL>    Install Node
+    -p, --purge <PURGE>        Purge Node
+    -r, --reset <RESET>        Reset Node
+    -u, --update <UPDATE>      Update Node
+        --upgrade <UPGRADE>    Upgrade Node
+    -V, --version              Print version information
+```
+
+
