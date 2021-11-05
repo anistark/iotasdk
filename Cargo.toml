@@ -3,7 +3,7 @@ name = "iotasdk"
 version = "0.0.1"
 edition = "2018"
 authors = ["Kumar Anirudha <mail@anirudha.dev>"]
-description = "A Swiss Knife for all things IOTA"
+description = "IOTASDK :: A Swiss Knife for all things IOTA"
 license = "Apache-2.0"
 repository = "https://github.com/anistark/iotasdk"
 
