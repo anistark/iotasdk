@@ -2,6 +2,7 @@
 extern crate clap;
 
 mod nodes;
+mod info;
 
 use clap::Parser;
 
@@ -18,8 +19,8 @@ struct Opts {
     config: String,
 
     /// A level of verbosity, and can be used multiple times
-    #[clap(short, long, parse(from_occurrences))]
-    verbose: i32,
+    // #[clap(long, parse(from_occurrences))]
+    // verbose: i32,
 
     #[clap(subcommand)]
     subcmd: SubCommand,
@@ -29,13 +30,14 @@ struct Opts {
 enum SubCommand {
     #[clap(version = "0.0.1")]
     #[clap(author = "Kumar Anirudha <mail@anirudha.dev>")]
-    #[clap(override_usage = "iotasdk node <NODESELECT> [OPTIONS]")]
 
     Node(Node),
 
     Init(Init),
 
     Contract(Contract),
+
+    Info(Info),
 }
 
 /// Configure and Control your IOTA Nodes
@@ -47,23 +49,23 @@ struct Node {
 
     /// Install Node
     #[clap(short, long)]
-    install: String,
+    install: bool,
 
     /// Update Node
     #[clap(short, long)]
-    update: String,
+    update: bool,
 
     /// Upgrade Node
     #[clap(long)]
-    upgrade: String,
+    upgrade: bool,
 
     /// Reset Node
     #[clap(short, long)]
-    reset: String,
+    reset: bool,
 
     /// Purge Node
     #[clap(short, long)]
-    purge: String,
+    purge: bool,
 
     /// Node Input. Available: bee, hornet, goshimmer, wasp
     nodeselect: String,
@@ -90,17 +92,27 @@ struct Contract {
     project: String,
 }
 
+/// Info
+#[derive(Parser)]
+struct Info {
+    /// System Info
+    #[clap(long)]
+    sys: bool
+
+    // Other info here
+}
+
 fn main() {
     let opts: Opts = Opts::parse();
 
     // println!("Using input file: {}", opts.input);
 
-    match opts.verbose {
-        0 => println!("No verbose info"),
-        1 => println!("Some verbose info"),
-        2 => println!("Tons of verbose info"),
-        _ => println!("Don't be ridiculous"),
-    }
+    // match opts.verbose {
+    //     0 => println!("No verbose info"),
+    //     1 => println!("Some verbose info"),
+    //     2 => println!("Tons of verbose info"),
+    //     _ => println!("Don't be ridiculous"),
+    // }
 
     match opts.subcmd {
         SubCommand::Node(t) => {
@@ -133,6 +145,13 @@ fn main() {
         SubCommand::Contract(t) => {
             if t.debug {
                 println!("Printing debug info...");
+            }
+
+        }
+
+        SubCommand::Info(info) => {
+            if info.sys {
+                info::sys();
             }
 
         }

@@ -11,3 +11,4 @@ repository = "https://github.com/anistark/iotasdk"
 
 [dependencies]
 clap = "3.0.0-beta.5"
+sysinfo = "0.20.5"
