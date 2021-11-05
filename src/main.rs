@@ -88,8 +88,46 @@ struct Contract {
     #[clap(short)]
     debug: bool,
     
-    /// Smart Contract Project
-    project: String,
+    /// Smart Contract VM
+    #[clap(long, required=true)]
+    vm: String,
+
+    /// WASP Chain ID.
+    #[clap(long)]
+    chain: String,
+
+    #[clap(subcommand)]
+    subcmd: ContractCommand,
+}
+
+
+#[derive(Parser)]
+enum ContractCommand {
+    #[clap(version = "0.0.1")]
+    #[clap(author = "Kumar Anirudha <mail@anirudha.dev>")]
+
+    /// Schema Tool can be used to auto-generate smart contract code from yaml file.
+    Schema(Schema),
+}
+
+/// Schema Tool
+#[derive(Parser)]
+struct Schema {
+    /// Initilising Schema Tool
+    #[clap(short, long)]
+    init: bool,
+
+    /// Generate Rust Smart Contract Code
+    #[clap(long)]
+    rust: bool,
+
+    /// Generate Go Smart Contract Code
+    #[clap(long)]
+    go: bool,
+
+    /// Generate TypeScript Smart Contract Code
+    #[clap(long)]
+    ts: bool,
 }
 
 /// Info
@@ -145,6 +183,18 @@ fn main() {
         SubCommand::Contract(t) => {
             if t.debug {
                 println!("Printing debug info...");
+            }
+
+            if t.vm == "rust" {
+                println!("Rust Wasm VM");
+            } else if t.vm == "go" {
+                println!("TinyGo Wasm VM");
+            } else if t.vm == "typescript" {
+                println!("TypeScript AssemblyScript VM");
+            } else if t.vm == "evm" {
+                println!("EVM VM");
+            } else {
+                println!("Unknown VM found : {}", t.vm);
             }
 
         }
