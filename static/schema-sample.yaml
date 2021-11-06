@@ -1,0 +1,26 @@
+name: ContractName
+description: My awesome ContractName
+structs: {}
+typedefs:
+  AllowancesForAgent: map[AgentID]Int64
+state:
+  allAllowances=a: map[AgentID]AllowancesForAgent
+  balances=b: map[AgentID]Int64 // balances per account
+  supply=s: Int64 // total supply of the token
+funcs:
+  init:
+    params:
+      creator: AgentID // creator/owner of the initial supply
+  transfer:
+    params:
+      account=ac: AgentID // target account
+      amount=am: Int64 // amount of tokens to transfer
+views:
+  balanceOf:
+    params:
+      account=ac: AgentID // sender account
+    results:
+      amount=am: Int64
+  totalSupply:
+    results:
+      supply=s: Int64

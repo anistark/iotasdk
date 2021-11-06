@@ -112,6 +112,10 @@ struct Schema {
     #[clap(short, long)]
     init: bool,
 
+    /// Smart Contract Name
+    #[clap(short, long)]
+    name: String,
+
     /// Generate Rust Smart Contract Code
     #[clap(long)]
     rust: bool,
@@ -203,7 +207,7 @@ fn main() {
 
         SubCommand::Schema(s) => {
             if s.init {
-                schema::init();
+                schema::init(s.name);
             } else if s.rust {
                 schema::rust();
             } else if s.go {
