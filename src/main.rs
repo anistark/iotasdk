@@ -1,6 +1,8 @@
 #[macro_use]
 extern crate clap;
 
+use figlet_rs::FIGfont;
+
 mod nodes;
 mod info;
 mod schema;
@@ -140,6 +142,11 @@ struct Info {
 }
 
 fn main() {
+    //TODO: To be improved later with custom font.
+    let standard_font = FIGfont::standand().unwrap();
+    let figure = standard_font.convert(crate_name!());
+    println!("{}", figure.unwrap());
+
     let opts: Opts = Opts::parse();
 
     // println!("Using input file: {}", opts.input);

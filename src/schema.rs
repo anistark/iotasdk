@@ -20,7 +20,3 @@ pub fn go() {
 pub fn ts() {
     println!("Generating TypeScript Smart Contract Code...");
 }
-
-fn print_type_of<T>(_: &T) {
-    println!("{}", std::any::type_name::<T>())
-}
