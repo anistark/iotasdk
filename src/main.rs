@@ -157,7 +157,7 @@ struct Info {
 fn main() {
     //TODO: To be improved later with custom font.
     let standard_font = FIGfont::standand().unwrap();
-    let figure = standard_font.convert(crate_name!());
+    let figure = standard_font.convert(concat!(crate_name!(), " " ,crate_version!()));
     println!("{}", figure.unwrap());
 
     let opts: Opts = Opts::parse();
