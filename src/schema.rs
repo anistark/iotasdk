@@ -9,14 +9,12 @@ pub fn init(name: String) {
     println!("Your new schema is now ready! Build something awesome.")
 }
 
-pub fn rust() {
-    println!("Generating Rust Smart Contract Code...");
-}
-
-pub fn go() {
-    println!("Generating Go Smart Contract Code...");
-}
-
-pub fn ts() {
-    println!("Generating TypeScript Smart Contract Code...");
+pub fn build(lang: String) {
+    if lang == "rust" {
+        println!("Generating Rust Smart Contract Code...");
+    } else if lang == "go" {
+        println!("Generating Go Smart Contract Code...");
+    } else if lang == "ts" {
+        println!("Generating TypeScript Smart Contract Code...");
+    }
 }

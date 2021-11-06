@@ -10,11 +10,11 @@ mod schema;
 use clap::Parser;
 
 #[derive(Parser)]
-
 #[clap(name = crate_name!())]
 #[clap(version = crate_version!())]
 #[clap(author = crate_authors!())]
 #[clap(about = crate_description!())]
+
 
 struct Opts {
     /// Sets a custom config file. Could have been an Option<T> with no default too
@@ -110,25 +110,38 @@ struct Contract {
 /// Schema Tool
 #[derive(Parser)]
 struct Schema {
-    /// Initilising Schema Tool
-    #[clap(short, long)]
-    init: bool,
 
+    #[clap(subcommand)]
+    subcmd: SchemaCommand,
+
+}
+
+
+#[derive(Parser)]
+enum SchemaCommand {
+    #[clap(version = "0.0.1")]
+    #[clap(author = "Kumar Anirudha <mail@anirudha.dev>")]
+
+    /// Initialise Schema Tool
+    Init(SchemaInit),
+
+    /// Build Smart Contract code
+    Build(SchemaBuild),
+}
+
+/// Schema Initialise
+#[derive(Parser)]
+struct SchemaInit {
     /// Smart Contract Name
-    #[clap(short, long)]
-    name: String,
+    name: String
+}
 
-    /// Generate Rust Smart Contract Code
+/// Schema Build Smart Contract Code
+#[derive(Parser)]
+struct SchemaBuild {
+    /// Smart Contract Language
     #[clap(long)]
-    rust: bool,
-
-    /// Generate Go Smart Contract Code
-    #[clap(long)]
-    go: bool,
-
-    /// Generate TypeScript Smart Contract Code
-    #[clap(long)]
-    ts: bool,
+    lang: String
 }
 
 /// Info
@@ -213,16 +226,14 @@ fn main() {
         }
 
         SubCommand::Schema(s) => {
-            if s.init {
-                schema::init(s.name);
-            } else if s.rust {
-                schema::rust();
-            } else if s.go {
-                schema::go();
-            } else if s.ts {
-                schema::ts();
-            } else {
-                println!("Unknonwn command for Schema Tool. Try: `iotasdk schema --help`");
+            match s.subcmd {
+                SchemaCommand::Init(si) => {
+                    schema::init(si.name);
+                }
+
+                SchemaCommand::Build(si) => {
+                    schema::build(si.lang);
+                }
             }
 
         }
