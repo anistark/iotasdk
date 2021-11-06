@@ -11,6 +11,13 @@ An SDK for IOTA
 Usage:
 
 ```sh
+  _           _                       _   _
+ (_)   ___   | |_    __ _   ___    __| | | | __
+ | |  / _ \  | __|  / _` | / __|  / _` | | |/ /
+ | | | (_) | | |_  | (_| | \__ \ | (_| | |   <
+ |_|  \___/   \__|  \__,_| |___/  \__,_| |_|\_\
+
+
 iotasdk 0.0.1
 
 Kumar Anirudha <mail@anirudha.dev>
@@ -33,7 +40,6 @@ SUBCOMMANDS:
     info        Get all info. Try: `iotasdk info --help`
     init        Initialise IOTASDK. Try: `iotasdk init --help`
     node        Setup and Configure IOTA Nodes. Try: `iotasdk node --help`
-    schema      Schema Tool is used to generate Smart Contract Code. Try: `iotasdk schema
-                --help`
+    schema      Schema Tool is used to generate Smart Contract Code. Try: `iotasdk schema --help`
 ```
 
