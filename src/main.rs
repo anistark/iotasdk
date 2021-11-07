@@ -14,6 +14,7 @@ use clap::Parser;
 #[clap(version = crate_version!())]
 #[clap(author = crate_authors!())]
 #[clap(about = crate_description!())]
+// #[clap(before_help = intro())]
 
 
 struct Opts {
@@ -220,6 +221,11 @@ fn main() {
 
         SubCommand::Info(info) => {
             if info.sys {
+                println!("System Info::");
+                info::sys();
+            } else {
+                // All the above
+                println!("System Info::");
                 info::sys();
             }
 

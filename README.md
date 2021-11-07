@@ -2,7 +2,7 @@
 An SDK for IOTA
 
 ##### Active Development Stage
-
+Built using [clap](https://github.com/clap-rs/clap).
 ## Build
 `cargo build`
 
