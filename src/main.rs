@@ -7,14 +7,17 @@ mod nodes;
 mod info;
 mod schema;
 
-use clap::Parser;
+// use clap::Parser;
+use clap::*;
 
 #[derive(Parser)]
-#[clap(name = crate_name!())]
-#[clap(version = crate_version!())]
-#[clap(author = crate_authors!())]
-#[clap(about = crate_description!())]
+// #[derive(Parser, Debug)]
+// #[clap(name = crate_name!())]
+// #[clap(version = crate_version!())]
+// #[clap(author = crate_authors!())]
+// #[clap(about = crate_description!())]
 // #[clap(before_help = intro())]
+// #[clap(author, version, about, long_about = None)]
 
 
 struct Opts {
@@ -158,8 +161,8 @@ struct Info {
 fn main() {
     //TODO: To be improved later with custom font.
     let standard_font = FIGfont::standand().unwrap();
-    let figure = standard_font.convert(concat!(crate_name!(), " " ,crate_version!()));
-    println!("{}", figure.unwrap());
+    // let figure = standard_font.convert(concat!(crate_name!(), " " ,crate_version!()));
+    // println!("{}", figure.unwrap());
 
     let opts: Opts = Opts::parse();
 
